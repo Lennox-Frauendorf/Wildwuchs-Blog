@@ -1,0 +1,345 @@
+﻿:root {
+    /* Light Mode (Standard) */
+    --bg-color: #fcfcfc;
+    --text-main: #222222;
+    --text-muted: #666666;
+    --border-color: #eaeaea;
+    --accent: #2c2c2c;
+    --bg-secondary: #f5f5f5;
+    --btn-hover: #e0e0e0;
+
+    --font-heading: 'Lora', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+    --bg-color: #121212;
+    --text-main: #e0e0e0;
+    --text-muted: #999999;
+    --border-color: #2a2a2a;
+    --accent: #ffffff;
+    --bg-secondary: #1e1e1e;
+    --btn-hover: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.7;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 40px;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Typografie */
+.container {
+    width: 90%;
+    max-width: 680px;
+    margin: auto;
+}
+
+.post-category {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.post-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.post-content p {
+    font-size: 1.15rem;
+    margin-bottom: 25px;
+    color: var(--text-main);
+}
+
+/* Autoren-Info */
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.author-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--text-main);
+    color: var(--bg-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* Buttons & Interaktionen */
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    color: var(--text-main);
+    transition: 0.2s;
+}
+
+.btn-text {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.btn-text:hover {
+    color: var(--text-muted);
+}
+
+.btn-primary {
+    background: var(--text-main);
+    color: var(--bg-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    opacity: 0.8;
+}
+
+.icon-btn {
+    font-size: 1.2rem;
+}
+
+.interaction-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 40px;
+}
+
+.interaction-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.interaction-btn:hover {
+    background: var(--bg-secondary);
+    color: var(--text-main);
+}
+
+.interaction-btn.liked {
+    color: #e0245e;
+    font-weight: 500;
+}
+
+/* Kommentare */
+.comment-section h3 {
+    font-family: var(--font-heading);
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    padding: 15px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    resize: vertical;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: var(--text-muted);
+}
+
+.comment {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comment-header {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-time {
+    color: var(--text-muted);
+    font-weight: normal;
+    font-size: 0.8rem;
+}
+
+.link-text {
+    color: #0066cc;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Progress Bar */
+#progressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--text-main);
+    width: 0%;
+    z-index: 100;
+}
+
+/* TERMINAL MODAL (Das Easter Egg) */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.terminal-window {
+    width: 90%;
+    max-width: 600px;
+    height: 350px;
+    background: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: var(--font-mono);
+}
+
+.terminal-header {
+    background: #333;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+}
+
+.mac-btns {
+    display: flex;
+    gap: 8px;
+    margin-right: 20px;
+}
+
+.mac-btns span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.close {
+    background: #ff5f56;
+}
+
+.minimize {
+    background: #ffbd2e;
+}
+
+.maximize {
+    background: #27c93f;
+}
+
+.terminal-title {
+    font-size: 0.8rem;
+    color: #aaa;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.terminal-body {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    color: #ddd;
+    font-size: 0.9rem;
+}
+
+.terminal-line {
+    margin-bottom: 8px;
+}
+
+.terminal-line.success {
+    color: #4ade80;
+}
+
+.terminal-line.error {
+    color: #f87171;
+}
+
+.terminal-input-wrapper {
+    display: flex;
+    padding: 15px 20px;
+    background: #111;
+}
+
+.prompt {
+    color: #4ade80;
+    margin-right: 10px;
+}
+
+#terminalInput {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    outline: none;
+}
