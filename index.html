@@ -4,177 +4,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wildwuchs – Journal</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Fira+Code&display=swap"
-        rel="stylesheet">
+    <title>Wildwuchs-Blog</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div id="progressBar"></div>
-
-    <div id="terminalOverlay" class="overlay hidden">
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <div class="mac-btns">
-                    <span class="close" onclick="closeTerminal()"></span>
-                    <span class="minimize"></span>
-                    <span class="maximize"></span>
-                </div>
-                <span class="terminal-title">login_terminal</span>
-            </div>
-            <div class="terminal-body" id="terminalBody">
-                <div class="terminal-line system">Verbindung zum Wildwuchs-Server hergestellt...</div>
-                <div class="terminal-line system">Befehle: <br>- /login as [user]&[pass]<br>- /register as [user]&[pass]
-                </div>
-            </div>
-            <div class="terminal-input-wrapper">
-                <span class="prompt">guest@wildwuchs:~$</span>
-                <input type="text" id="terminalInput" autocomplete="off" spellcheck="false">
-            </div>
+    <div id="loader-wrapper">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <h2>WILD<span>WUCHS</span></h2>
+            <p>Wohngruppe Hahnenklee</p>
+            <button id="enter-btn">App starten</button>
         </div>
     </div>
 
-    <nav class="navbar container">
-        <div class="logo">Wildwuchs.</div>
-        <div class="nav-actions">
-            <button id="themeToggle" class="icon-btn" onclick="toggleTheme()">🌙</button>
-            <span id="welcomeUser" class="user-greeting hidden"></span>
-            <button id="loginBtn" class="btn-text" onclick="openTerminal()">Anmelden</button>
-            <button id="logoutBtn" class="btn-text hidden" onclick="logout()">Abmelden</button>
+    <audio id="bg-music" src="https://rapfame.app/tracks/21131134" loop></audio>
+
+    <header>
+        <div class="logo">WILD<span>WUCHS</span></div>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
         </div>
-    </nav>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="#home" class="nav-link">Dashboard</a></li>
+                <li><a href="#posts" class="nav-link">News & Pläne</a></li>
+                <li><button id="authBtn" class="login-btn">Anmelden</button></li>
+            </ul>
+        </nav>
+    </header>
 
-    <main class="container">
-        <article class="blog-post">
-            <header class="post-header">
-                <p class="post-category">Gesellschaft & Kultur</p>
-                <h1 class="post-title">Was bedeutet moderne Unabhängigkeit?</h1>
+    <div id="login-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span id="close-modal" class="close-btn">&times;</span>
+            <h2>Interner <span>Login</span></h2>
+            <p>Nur für Bewohner und Betreuer der WG Wildwuchs.</p>
+
+            <div class="input-group">
+                <input type="text" id="login-user" placeholder="Benutzername">
+            </div>
+            <div class="input-group">
+                <input type="password" id="login-pass" placeholder="Passwort">
+            </div>
+
+            <p id="login-error" class="error-msg">Falsche Zugangsdaten!</p>
+            <button id="submit-login">Einloggen</button>
+        </div>
+    </div>
+
+    <section id="home" class="hero">
+        <h1>WG Wildwuchs</h1>
+        <p>Leben im Alltag.</p>
+    </section>
+
+    <main id="posts" class="post-container">
+
+        <article class="post">
+            <div class="post-image">
+                <img src="Eröffnung.png" alt="Eröffnung">
+            </div>
+            <div class="post-content">
+                <h2>Eröffnung der Seite</h2>
                 <div class="post-meta">
-                    <div class="author-info">
-                        <div class="author-avatar">WW</div>
-                        <div>
-                            <strong>Redaktion Wildwuchs</strong><br>
-                            <span>25. Feb 2026 · <span id="readTime">2</span> Min. Lesezeit</span>
-                        </div>
+                    <span class="date">05.03.2026, 20:36 Uhr</span>
+                    <span class="author">Von: Lennox Frauendorf</span>
+                </div>
+                <p>Um 20:36 wurde diese Seite veröffentlicht. Schönen Abend noch,
+                </p>
+                <p>Mit freundlichen Grüßen,</p>
+                <br>
+                <p>Wohngruppe Wildwuchs</p>
+
+                <div class="post-actions">
+                    <button class="like-btn" data-postid="1">🔥 <span class="like-count">0</span></button>
+                    <button class="share-btn" data-title="Eröffnung der Seite" data-url="#post1">🔗 Teilen</button>
+                </div>
+
+                <div class="comments-section">
+                    <h3>Kommentare</h3>
+                    <div class="comment-list" id="comments-1"></div>
+                    <div class="comment-input-area">
+                        <input type="text" id="input-1" placeholder="Erst anmelden..." disabled>
+                        <button class="submit-comment" data-postid="1" disabled>Senden</button>
                     </div>
                 </div>
-            </header>
-
-            <div class="post-content">
-                <p>Moderne Unabhängigkeit bezeichnet im 21. Jahrhundert weniger die absolute Isolation von anderen,
-                    sondern vielmehr die Selbstbestimmung, Eigenverantwortung und die Freiheit zur persönlichen
-                    Gestaltung des Lebens.</p>
-                <br>
-                <p>Sie wird oft als ein Zustand verstanden, in dem man Entscheidungen
-                    eigenständig trifft, ohne Kontrolle durch äußere Mächte, Personen oder starre Konventionen.</p>
             </div>
-
-            <div class="interaction-bar">
-                <div class="interaction-left">
-                    <button id="likeBtn" class="interaction-btn" onclick="toggleLike()">
-                        <span id="likeIcon">🤍</span> <span id="likeCount">0</span>
-                    </button>
-                    <button class="interaction-btn" onclick="focusComment()">Kommentieren</button>
-                </div>
-                <div class="interaction-right">
-                    <button class="interaction-btn" onclick="sharePost()">Teilen</button>
-                </div>
-            </div>
-
-            <section class="comment-section">
-                <h3>Diskussion</h3>
-
-                <div id="commentForm" class="comment-box hidden">
-                    <textarea id="commentInput" placeholder="Was denkst du darüber?"></textarea>
-                    <button class="btn-primary" onclick="addComment()">Veröffentlichen</button>
-                </div>
-
-                <p id="loginHint" class="login-hint">
-                    Du musst <span class="link-text" onclick="openTerminal()">angemeldet</span> sein, um zu
-                    kommentieren.
-                </p>
-
-                <div id="comments" class="comments-container"></div>
-            </section>
-        </article>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <article class="blog-post">
-            <header class="post-header">
-                <p class="post-category">Politik</p>
-                <h1 class="post-title">ICE-Beamte erschießen weitere Unschuldige</h1>
-                <div class="post-meta">
-                    <div class="author-info">
-                        <div class="author-avatar">WW</div>
-                        <div>
-                            <strong>Redaktion Wildwuchs</strong><br>
-                            <span>25. Feb 2026 · <span id="readTime">7</span> Min. Lesezeit</span>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            <div class="post-content">
-                <p>Im Januar 2026 kam es in Minneapolis zu mehreren tödlichen Vorfällen unter Beteiligung von
-                    US-Bundesbeamten (ICE/Homeland Security Investigations).
-                </p>
-                <br>
-                <br>
-                <ul>
-                    <li>Renee Nicole Good (37): Sie wurde Anfang Januar 2026 von einem ICE-Beamten in ihrem Auto in
-                        Minneapolis erschossen.</li>
-                        <br>
-                    <li>Alex Pretti (37): Wenige Wochen nach dem Tod von Good wurde Alex Pretti, ein Intensivpfleger,
-                        ebenfalls in Minneapolis von Bundesbeamten erschossen, als er gegen die erste Tat demonstriert
-                        haben soll.</li>
-                        <br>
-                    <li>Weitere Todesfälle/Hintergrund: Die Berichterstattung weist auf eine Reihe von tödlichen
-                        Schüssen durch Bundesbeamte im Rahmen der verschärften Einwanderungspolitik hin, wobei
-                        Videoaufnahmen teilweise Zweifel an den offiziellen Darstellungen der Vorfälle aufwarfen.</li>
-                </ul>
-                <br>
-                <br>
-                <p>Zudem wurde bekannt, dass bereits im März 2025 ein US-Bürger, Ruben Ray Martinez, in Texas von einem
-                    ICE-Agenten erschossen wurde, was jedoch erst Monate später öffentlich bekannt wurde. Im Kontext der
-                    Ereignisse von Anfang 2026 in Minneapolis wurden mehrere Personen durch Bundesbeamte getötet.</p>
-            </div>
-
-            <div class="interaction-bar">
-                <div class="interaction-left">
-                    <button id="likeBtn" class="interaction-btn" onclick="toggleLike()">
-                        <span id="likeIcon">🤍</span> <span id="likeCount">0</span>
-                    </button>
-                    <button class="interaction-btn" onclick="focusComment()">Kommentieren</button>
-                </div>
-                <div class="interaction-right">
-                    <button class="interaction-btn" onclick="sharePost()">Teilen</button>
-                </div>
-            </div>
-
-            <section class="comment-section">
-                <h3>Diskussion</h3>
-
-                <div id="commentForm" class="comment-box hidden">
-                    <textarea id="commentInput" placeholder="Was denkst du darüber?"></textarea>
-                    <button class="btn-primary" onclick="addComment()">Veröffentlichen</button>
-                </div>
-
-                <p id="loginHint" class="login-hint">
-                    Du musst <span class="link-text" onclick="openTerminal()">angemeldet</span> sein, um zu
-                    kommentieren.
-                </p>
-
-                <div id="comments" class="comments-container"></div>
-            </section>
         </article>
     </main>
+
+    <div id="toast-container"></div>
 
     <script src="script.js"></script>
 </body>
